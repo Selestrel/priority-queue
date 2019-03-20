@@ -39,8 +39,8 @@ class Node {
 	  if (this.parent) {
         let root = this.parent.parent;
         let parentNode = this.parent;
-        let parentNodeLeftChild = parentNode.left;
-        let parentNodeRightChild = parentNode.right;
+        let parentNodeLeftChild = this.parent.left;
+        let parentNodeRightChild = this.parent.right;
         let leftChild = this.left;
         let rightChild = this.right;
 
@@ -60,7 +60,6 @@ class Node {
 	      root.removeChild(parentNode);
 	      root.appendChild(this);
 	    }
-	    this.appendChild(parentNode);
 	    if (parentNodeLeftChild && parentNodeLeftChild != this) {
 	      this.left = parentNodeLeftChild;
 	      parentNodeLeftChild.parent = this;
@@ -69,6 +68,7 @@ class Node {
 	      this.right = parentNodeRightChild;
 	      parentNodeRightChild.parent = this;
 	    }
+	    this.appendChild(parentNode);
 	    if(leftChild) {
 	      parentNode.left = leftChild;
 	      leftChild.parent = parentNode;
@@ -81,4 +81,4 @@ class Node {
 	}
 }
 
-module.exports = Node;
+//module.exports = Node;
