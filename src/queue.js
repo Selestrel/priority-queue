@@ -23,7 +23,7 @@ class PriorityQueue {
 	    throw new Error("Queue is empty");
 	  } else {
 	    var popNode = this.heap.pop();
-	    return popNode.data;
+	    return popNode;
 	  }
 	}
 
@@ -36,4 +36,4 @@ class PriorityQueue {
 	}
 }
 
-module.exports = PriorityQueue;
+//module.exports = PriorityQueue;
