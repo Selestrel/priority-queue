@@ -10,12 +10,7 @@ class MaxHeap {
 	push(data, priority) {
 	  const node = new Node(data, priority);
 	  this.insertNode(node);
-	  if(this.root && this.root.priority <= node.priority) {
-	    this.shiftNodeUp(node);
-	  }
-	  if (node.parent && node.parent.priority < node.priority) {
-	    this.shiftNodeDown(node.parent);
-	  }
+	  this.shiftNodeUp(node);
 	  this.heap_size += 1;
 	}
 
@@ -96,15 +91,17 @@ class MaxHeap {
 	}
 
 	shiftNodeUp(node) {
-	  if (node.parent) {
+	  if (node.parent && node.parent.priority < node.priority) {
 	    var nodeParentIndex = this.parentNodes.indexOf(node.parent);
 	    var nodeIndex = this.parentNodes.indexOf(node);
 	    var parentNode = node.parent;
+	    if(this.root == parentNode) {
+	      this.root = node;
+	    }
 	    node.swapWithParent();
 	    this.swapParentNodes(parentNode, node);
 	    this.shiftNodeUp(node);
 	  }
-	  this.root = node;
 	}
 
 	swapParentNodes(parentNode, node) {

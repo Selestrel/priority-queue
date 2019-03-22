@@ -36,4 +36,4 @@ class PriorityQueue {
 	}
 }
 
-//module.exports = PriorityQueue;
+module.exports = PriorityQueue;
